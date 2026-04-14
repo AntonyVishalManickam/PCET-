@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics | Park College of Engineering & Technology</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-primary: #8E1B54; /* PCET Maroon */
+            --brand-secondary: #F97316; /* PCET Orange */
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --shadow-soft: 0 20px 40px rgba(142, 27, 84, 0.08);
+            --shadow-hover: 0 30px 60px rgba(249, 115, 22, 0.12);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-pill: 100px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* --- Top Bar --- */
+        .top-bar {
+            position: absolute; top: 0; left: 0; width: 100%; z-index: 1001;
+            background: var(--brand-primary); color: var(--white);
+            padding: 10px 5%; display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.9rem; font-weight: 400; letter-spacing: 0.5px;
+        }
+        .top-bar a { font-weight: 600; transition: var(--transition); text-decoration: underline; text-underline-offset: 3px; }
+        .top-bar a:hover { color: var(--brand-secondary); }
+
+        /* --- Glassmorphism Navbar with Dropdown --- */
+        header {
+            position: fixed; top: 55px; left: 5%; right: 5%; z-index: 1000;
+            background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-pill); padding: 10px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.5);
+        }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-area img { height: 45px; }
+        
+        nav ul { display: flex; gap: 30px; list-style: none; margin: 0; align-items: center; }
+        nav > ul > li > a { font-weight: 500; font-size: 0.95rem; color: var(--dark); transition: var(--transition); position: relative; padding: 10px 0;}
+        nav > ul > li > a:hover, nav > ul > li > a.active { color: var(--brand-primary); }
+        nav > ul > li > a::after { content: ''; position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--brand-secondary); bottom: 0px; left: 50%; transform: translateX(-50%) scale(0); transition: var(--transition); }
+        nav > ul > li > a:hover::after, nav > ul > li > a.active::after { transform: translateX(-50%) scale(1); }
+
+        /* Modern Dropdown Menu CSS */
+        .nav-dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+            background: var(--white); box-shadow: var(--shadow-hover); border-radius: var(--radius-md);
+            padding: 15px 0; min-width: 220px; opacity: 0; visibility: hidden; transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(5px); }
+        .dropdown-menu li { display: block; width: 100%; }
+        .dropdown-menu a { 
+            padding: 10px 25px; display: block; color: var(--gray); font-size: 0.95rem; 
+            font-weight: 500; transition: var(--transition);
+        }
+        .dropdown-menu a:hover { color: var(--brand-primary); background: var(--light); padding-left: 30px; }
+
+        .btn-modern {
+            background: linear-gradient(135deg, var(--brand-primary), #b3256b);
+            color: var(--white); padding: 12px 28px; border-radius: var(--radius-pill);
+            font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;
+            box-shadow: 0 10px 20px rgba(142, 27, 84, 0.3); transition: var(--transition); border: none; cursor: pointer;
+        }
+        .btn-modern:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(142, 27, 84, 0.4); color: var(--white); }
+
+         /* Modern Dropdown Menu CSS */
+        .nav-dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+            background: var(--white); box-shadow: var(--shadow-hover); border-radius: var(--radius-md);
+            padding: 15px 0; min-width: 220px; opacity: 0; visibility: hidden; transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(5px); }
+        .dropdown-menu li { display: block; width: 100%; }
+        .dropdown-menu a { 
+            padding: 10px 25px; display: block; color: var(--gray); font-size: 0.95rem; 
+            font-weight: 500; transition: var(--transition);
+        }
+        .dropdown-menu a:hover { color: var(--brand-primary); background: var(--light); padding-left: 30px; }
+
+        .btn-modern {
+            background: linear-gradient(135deg, var(--brand-primary), #b3256b);
+            color: var(--white); padding: 12px 28px; border-radius: var(--radius-pill);
+            font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;
+            box-shadow: 0 10px 20px rgba(142, 27, 84, 0.3); transition: var(--transition); border: none; cursor: pointer;
+        }
+        .btn-modern:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(142, 27, 84, 0.4); color: var(--white); }
+
+        
+        /* --- Inner Hero --- */
+        .inner-hero {
+            height: 50vh; min-height: 400px;
+            background: linear-gradient(to bottom, rgba(142, 27, 84, 0.8), rgba(15, 23, 42, 0.9)), url('https://www.pcet.ac.in/wp-content/uploads/2023/07/home-banner-19.jpg') center/cover no-repeat;
+            display: flex; align-items: flex-end; justify-content: center; text-align: center;
+            padding: 0 5% 60px; position: relative;
+        }
+        .inner-hero h1 { font-size: 4rem; font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 15px; animation: slideUp 0.8s ease forwards; }
+        .inner-hero h1 span { color: var(--brand-secondary); }
+        .inner-hero p { font-size: 1.2rem; color: #cbd5e1; font-weight: 300; animation: slideUp 1s ease forwards; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Section Styling --- */
+        .section-padding { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
+        .section-header { margin-bottom: 50px; text-align: center; }
+        .section-header .subtitle { color: var(--brand-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; display: block; margin-bottom: 10px;}
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; color: var(--dark); }
+
+        /* --- Modern Tabbed Interface --- */
+        .tabs-container { text-align: center; margin-bottom: 50px; }
+        .tab-buttons {
+            display: inline-flex; background: var(--white); padding: 8px; border-radius: var(--radius-pill);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); gap: 5px;
+        }
+        .tab-btn {
+            background: transparent; border: none; padding: 12px 30px; border-radius: var(--radius-pill);
+            font-size: 1.05rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: var(--transition);
+        }
+        .tab-btn:hover { color: var(--brand-primary); }
+        .tab-btn.active { background: var(--brand-primary); color: var(--white); box-shadow: 0 5px 15px rgba(142, 27, 84, 0.3); }
+
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Course List Cards (Replacing Tables) --- */
+        .course-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;
+        }
+        .course-item {
+            background: var(--white); padding: 20px 25px; border-radius: var(--radius-md);
+            display: flex; align-items: center; gap: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid var(--border-color);
+            transition: var(--transition); border-left: 4px solid var(--brand-secondary);
+        }
+        .course-item:hover {
+            transform: translateY(-5px); box-shadow: var(--shadow-hover); border-left-color: var(--brand-primary);
+        }
+        .course-number {
+            width: 40px; height: 40px; background: var(--light); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: var(--brand-primary); font-size: 1.1rem; flex-shrink: 0;
+        }
+        .course-name { font-size: 1.1rem; font-weight: 600; color: var(--dark); line-height: 1.4; }
+
+        /* --- Academic Resources --- */
+        .resources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 60px; }
+        .resource-card {
+            background: linear-gradient(135deg, var(--brand-primary), #6d1541); padding: 40px; border-radius: var(--radius-lg);
+            color: var(--white); text-align: center; transition: var(--transition); display: block;
+        }
+        .resource-card.alt { background: linear-gradient(135deg, var(--brand-secondary), #d6640c); }
+        .resource-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); color: var(--white); }
+        .resource-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
+        .resource-card p { font-size: 1.05rem; opacity: 0.9; }
+
+        /* --- Footer (Consistent) --- */
+        footer { background: var(--dark); color: #94a3b8; padding: 80px 5% 40px; border-radius: 40px 40px 0 0; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; max-width: 1400px; margin: 0 auto; }
+        .footer-brand h2 { color: var(--white); font-size: 2rem; font-weight: 800; margin-bottom: 20px;}
+        .footer-brand p { margin-bottom: 30px; font-weight: 300; line-height: 1.8;}
+        .footer-col h4 { color: var(--white); font-size: 1.2rem; font-weight: 600; margin-bottom: 25px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul a { transition: var(--transition); font-weight: 300; }
+        .footer-col ul a:hover { color: var(--brand-secondary); padding-left: 5px; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; padding-top: 30px; font-weight: 300; font-size: 0.9rem;}
+
+        @media (max-width: 768px) {
+            header { left: 20px; right: 20px; padding: 10px 20px; top: 70px; }
+            .top-bar { flex-direction: column; text-align: center; gap: 5px; padding: 10px 5%; position: relative; }
+            nav { display: none; }
+            .inner-hero h1 { font-size: 2.5rem; }
+            .resources-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>📞 +91 94437 92222 | ✉️ info@pcet.ac.in</div>
+        <div>Counselling Code: 2716 | <a href="https://www.pcet.ac.in/pay-online/">💳 Online Payment</a></div>
+    </div>
+
+    <header>
+        <div class="logo-area">
+            <img src="https://www.pcet.ac.in/wp-content/themes/park-theme/assets/img/new-logo.png" alt="PCET">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="nav-dropdown">
+                    <a href="academics.html">Academics ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="academics.html">Courses</a></li>
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">Curriculum & Regulations</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="campus-life.html" class="active">Campus Life ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#library">Library</a></li>
+                        <li><a href="#infrastructure">Infrastructure</a></li>
+                        <li><a href="#hostel">Hostel</a></li>
+                        <li><a href="#sports">Sports & Games</a></li>
+                        <li><a href="#Transport ">Transport </a></li>
+                    </ul>
+                <li><a href="placements.html" class="active">Placements</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="https://pcet.ac.in/results2025/">Exam Results</a></li>
+            </ul>
+        </nav>
+        <a href="https://www.pcet.ac.in/admission-enquiry-form-park-engineering-college-in-coimbatore/" class="btn-modern">Apply Now</a>
+    </header>
+
+    <section class="inner-hero">
+        <div>
+            <h1>Academic <span>Programs</span></h1>
+            <p>Fostering Innovation and Engineering Excellence</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="section-header">
+            <span class="subtitle">Our Departments</span>
+            <h2>Explore Our Courses</h2>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab('ug')">UG Courses</button>
+                <button class="tab-btn" onclick="openTab('pg')">PG Courses</button>
+                <button class="tab-btn" onclick="openTab('phd')">Ph.D Courses</button>
+            </div>
+        </div>
+
+        <div id="ug" class="tab-content active">
+            <div class="course-grid">
+                <div class="course-item"><div class="course-number">1</div><div class="course-name">B.E Aeronautical Engineering</div></div>
+                <div class="course-item"><div class="course-number">2</div><div class="course-name">B.Tech Agriculture Engineering</div></div>
+                <div class="course-item"><div class="course-number">3</div><div class="course-name">B.Tech Artificial Intelligence & Data Science</div></div>
+                <div class="course-item"><div class="course-number">4</div><div class="course-name">B.E Bio Medical Engineering</div></div>
+                <div class="course-item"><div class="course-number">5</div><div class="course-name">B.E Computer Science and Engineering</div></div>
+                <div class="course-item"><div class="course-number">6</div><div class="course-name">B.E CSE Cyber Security</div></div>
+                <div class="course-item"><div class="course-number">7</div><div class="course-name">B.E Electrical and Electronics Engineering</div></div>
+                <div class="course-item"><div class="course-number">8</div><div class="course-name">B.E Electronics and Communication Engineering</div></div>
+                <div class="course-item"><div class="course-number">9</div><div class="course-name">B.E Geoinformatics Engineering</div></div>
+                <div class="course-item"><div class="course-number">10</div><div class="course-name">B.Tech Information Technology</div></div>
+                <div class="course-item"><div class="course-number">11</div><div class="course-name">B.E Mechanical Engineering</div></div>
+                <div class="course-item"><div class="course-number">12</div><div class="course-name">B.E Mechatronics Engineering</div></div>
+                <div class="course-item"><div class="course-number">13</div><div class="course-name">B.E Medical Electronics Engineering</div></div>
+                <div class="course-item"><div class="course-number">14</div><div class="course-name">B.E Robotics and Automation</div></div>
+                <div class="course-item"><div class="course-number">15</div><div class="course-name">B.Tech Textile Technology</div></div>
+            </div>
+        </div>
+
+        <div id="pg" class="tab-content">
+            <div class="course-grid">
+                <div class="course-item"><div class="course-number">1</div><div class="course-name">M.E Aeronautical Engineering</div></div>
+                <div class="course-item"><div class="course-number">2</div><div class="course-name">M.E Computer Science And Engineering</div></div>
+                <div class="course-item"><div class="course-number">3</div><div class="course-name">M.E Engineering Design</div></div>
+                <div class="course-item"><div class="course-number">4</div><div class="course-name">Management Studies (MBA)</div></div>
+            </div>
+        </div>
+
+        <div id="phd" class="tab-content">
+            <div class="course-grid">
+                <div class="course-item"><div class="course-number">1</div><div class="course-name">Ph.D Aeronautical Engineering</div></div>
+                <div class="course-item"><div class="course-number">2</div><div class="course-name">Ph.D Computer Science and Engineering</div></div>
+                <div class="course-item"><div class="course-number">3</div><div class="course-name">Ph.D Mechanical Engineering</div></div>
+            </div>
+        </div>
+
+        <div class="resources-grid">
+            <a href="#" class="resource-card">
+                <h3>📅 Academic Calendar</h3>
+                <p>View important dates, semester schedules, and holidays for the current academic year.</p>
+            </a>
+            <a href="#" class="resource-card alt">
+                <h3>📚 Curriculum & Regulations</h3>
+                <p>Download the official Anna University syllabus, course structures, and academic rules.</p>
+            </a>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>PCET.</h2>
+                <p>Park College of Engineering and Technology is dedicated to providing world-class education geared to meet the fast-changing human resource needs of the global industry.</p>
+                <div style="display: flex; gap: 15px;">
+                    <a href="https://www.pcet.ac.in/online-grievance" class="btn-modern" style="padding: 8px 20px; font-size: 0.8rem;">Grievance</a>
+                    <a href="https://www.pcet.ac.in/anti-ragging" class="btn-modern" style="padding: 8px 20px; font-size: 0.8rem; background: #334155; box-shadow: none;">Anti-Ragging</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Academics</h4>
+                <ul>
+                    <li><a href="#">Undergraduate Programs</a></li>
+                    <li><a href="#">Postgraduate Programs</a></li>
+                    <li><a href="#">Academic Diary</a></li>
+                    <li><a href="#">Exam Results</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Institution</h4>
+                <ul>
+                    <li><a href="#">NAAC SSR</a></li>
+                    <li><a href="#">AICTE Approvals</a></li>
+                    <li><a href="#">Mandatory Disclosure</a></li>
+                    <li><a href="#">Park ERP Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li style="color: #cbd5e1; font-weight: 300;">📍 NH 544, Avinashi Road,<br>Kaniyur, Coimbatore - 641 659</li>
+                    <li><a href="tel:04212911100">📞 0421 - 2911100</a></li>
+                    <li><a href="tel:9443792222">📱 +91 94437 92222</a></li>
+                    <li><a href="mailto:info@pcet.ac.in">✉️ info@pcet.ac.in</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Park College of Engineering & Technology. All Rights Reserved. Designed for the Future.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Show selected tab and activate button
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

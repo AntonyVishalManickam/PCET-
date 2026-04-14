@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Life | Park College of Engineering & Technology</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-primary: #8E1B54; /* PCET Maroon */
+            --brand-secondary: #F97316; /* PCET Orange */
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --shadow-soft: 0 20px 40px rgba(142, 27, 84, 0.08);
+            --shadow-hover: 0 30px 60px rgba(249, 115, 22, 0.12);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-pill: 100px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        
+        /* Enables smooth scrolling when clicking dropdown links */
+        html { scroll-behavior: smooth; } 
+        
+        body { background-color: var(--light); color: var(--dark); overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+         /* Modern Dropdown Menu CSS */
+        .nav-dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+            background: var(--white); box-shadow: var(--shadow-hover); border-radius: var(--radius-md);
+            padding: 15px 0; min-width: 220px; opacity: 0; visibility: hidden; transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(5px); }
+        .dropdown-menu li { display: block; width: 100%; }
+        .dropdown-menu a { 
+            padding: 10px 25px; display: block; color: var(--gray); font-size: 0.95rem; 
+            font-weight: 500; transition: var(--transition);
+        }
+        .dropdown-menu a:hover { color: var(--brand-primary); background: var(--light); padding-left: 30px; }
+
+        .btn-modern {
+            background: linear-gradient(135deg, var(--brand-primary), #b3256b);
+            color: var(--white); padding: 12px 28px; border-radius: var(--radius-pill);
+            font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;
+            box-shadow: 0 10px 20px rgba(142, 27, 84, 0.3); transition: var(--transition); border: none; cursor: pointer;
+        }
+        .btn-modern:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(142, 27, 84, 0.4); color: var(--white); }
+
+        
+        /* --- Top Bar --- */
+        .top-bar {
+            position: absolute; top: 0; left: 0; width: 100%; z-index: 1001;
+            background: var(--brand-primary); color: var(--white);
+            padding: 10px 5%; display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.9rem; font-weight: 400; letter-spacing: 0.5px;
+        }
+        .top-bar a { font-weight: 600; transition: var(--transition); text-decoration: underline; text-underline-offset: 3px; }
+        .top-bar a:hover { color: var(--brand-secondary); }
+
+        /* --- Glassmorphism Navbar with Dropdown --- */
+        header {
+            position: fixed; top: 55px; left: 5%; right: 5%; z-index: 1000;
+            background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-pill); padding: 10px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.5);
+        }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-area img { height: 45px; }
+        
+        nav ul { display: flex; gap: 30px; list-style: none; margin: 0; align-items: center; }
+        nav > ul > li > a { font-weight: 500; font-size: 0.95rem; color: var(--dark); transition: var(--transition); position: relative; padding: 10px 0;}
+        nav > ul > li > a:hover, nav > ul > li > a.active { color: var(--brand-primary); }
+        nav > ul > li > a::after { content: ''; position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--brand-secondary); bottom: 0px; left: 50%; transform: translateX(-50%) scale(0); transition: var(--transition); }
+        nav > ul > li > a:hover::after, nav > ul > li > a.active::after { transform: translateX(-50%) scale(1); }
+
+        /* Modern Dropdown Menu CSS */
+        .nav-dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+            background: var(--white); box-shadow: var(--shadow-hover); border-radius: var(--radius-md);
+            padding: 15px 0; min-width: 220px; opacity: 0; visibility: hidden; transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(5px); }
+        .dropdown-menu li { display: block; width: 100%; }
+        .dropdown-menu a { 
+            padding: 10px 25px; display: block; color: var(--gray); font-size: 0.95rem; 
+            font-weight: 500; transition: var(--transition);
+        }
+        .dropdown-menu a:hover { color: var(--brand-primary); background: var(--light); padding-left: 30px; }
+
+        .btn-modern {
+            background: linear-gradient(135deg, var(--brand-primary), #b3256b);
+            color: var(--white); padding: 12px 28px; border-radius: var(--radius-pill);
+            font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;
+            box-shadow: 0 10px 20px rgba(142, 27, 84, 0.3); transition: var(--transition); border: none; cursor: pointer;
+        }
+        .btn-modern:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(142, 27, 84, 0.4); color: var(--white); }
+
+        /* --- Inner Hero --- */
+        .inner-hero {
+            height: 50vh; min-height: 400px;
+            background: linear-gradient(to bottom, rgba(142, 27, 84, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex; align-items: flex-end; justify-content: center; text-align: center;
+            padding: 0 5% 60px; position: relative;
+        }
+        .inner-hero h1 { font-size: 4rem; font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 15px; animation: slideUp 0.8s ease forwards; }
+        .inner-hero h1 span { color: var(--brand-secondary); }
+        .inner-hero p { font-size: 1.2rem; color: #cbd5e1; font-weight: 300; animation: slideUp 1s ease forwards; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Section Styling --- */
+        .section-padding { padding: 100px 5%; max-width: 1300px; margin: 0 auto; scroll-margin-top: 120px; }
+        .section-header { margin-bottom: 50px; text-align: center; }
+        .section-header .subtitle { color: var(--brand-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; display: block; margin-bottom: 10px;}
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; color: var(--dark); }
+
+        /* --- Modern Split Layout for Facilities --- */
+        .facility-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
+        .facility-row.reverse { grid-template-columns: 1fr 1.2fr; }
+        .facility-row.reverse .text-content { order: 2; }
+        .facility-row.reverse .image-container { order: 1; }
+        
+        .text-content h3 { font-size: 2.2rem; font-weight: 800; color: var(--brand-primary); margin-bottom: 20px; line-height: 1.2; }
+        .text-content p { font-size: 1.1rem; color: var(--gray); margin-bottom: 20px; line-height: 1.8; font-weight: 300; text-align: justify;}
+        .text-content ul { list-style: none; margin-top: 20px; }
+        .text-content ul li { font-size: 1.05rem; color: var(--dark); font-weight: 500; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;}
+        .text-content ul li::before { content: '✓'; color: var(--brand-secondary); font-weight: bold; }
+
+        .image-container { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); height: 450px; }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s; }
+        .image-container:hover img { transform: scale(1.05); }
+
+        /* --- Grid for Amenities --- */
+        .amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px;}
+        .amenity-card {
+            background: var(--white); padding: 40px; border-radius: var(--radius-md);
+            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.02); border-bottom: 4px solid var(--brand-secondary);
+        }
+        .amenity-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-bottom-color: var(--brand-primary); }
+        .amenity-icon { font-size: 3rem; margin-bottom: 20px; }
+        .amenity-card h4 { font-size: 1.3rem; font-weight: 700; color: var(--dark); margin-bottom: 15px; }
+        .amenity-card p { color: var(--gray); line-height: 1.6; font-size: 0.95rem;}
+
+        /* --- Footer (Consistent) --- */
+        footer { background: var(--dark); color: #94a3b8; padding: 80px 5% 40px; border-radius: 40px 40px 0 0; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; max-width: 1400px; margin: 0 auto; }
+        .footer-brand h2 { color: var(--white); font-size: 2rem; font-weight: 800; margin-bottom: 20px;}
+        .footer-brand p { margin-bottom: 30px; font-weight: 300; line-height: 1.8;}
+        .footer-col h4 { color: var(--white); font-size: 1.2rem; font-weight: 600; margin-bottom: 25px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul a { transition: var(--transition); font-weight: 300; }
+        .footer-col ul a:hover { color: var(--brand-secondary); padding-left: 5px; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; padding-top: 30px; font-weight: 300; font-size: 0.9rem;}
+
+        @media (max-width: 1024px) {
+            .facility-row, .facility-row.reverse { grid-template-columns: 1fr; gap: 40px; margin-bottom: 60px; }
+            .facility-row.reverse .text-content { order: 1; }
+            .facility-row.reverse .image-container { order: 2; }
+            .image-container { height: 350px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            header { left: 20px; right: 20px; padding: 10px 20px; top: 70px; }
+            .top-bar { flex-direction: column; text-align: center; gap: 5px; padding: 10px 5%; position: relative; }
+            nav { display: none; }
+            .inner-hero h1 { font-size: 2.5rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .image-container { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>📞 +91 94437 92222 | ✉️ info@pcet.ac.in</div>
+        <div>Counselling Code: 2716 | <a href="https://www.pcet.ac.in/pay-online/">💳 Online Payment</a></div>
+    </div>
+
+    <header>
+        <div class="logo-area">
+            <img src="https://www.pcet.ac.in/wp-content/themes/park-theme/assets/img/new-logo.png" alt="PCET">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="nav-dropdown">
+                    <a href="academics.html">Academics ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="academics.html">Courses</a></li>
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">Curriculum & Regulations</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="campus-life.html" class="active">Campus Life ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#library">Library</a></li>
+                        <li><a href="#infrastructure">Infrastructure</a></li>
+                        <li><a href="#hostel">Hostel</a></li>
+                        <li><a href="#sports">Sports & Games</a></li>
+                        <li><a href="#Transport ">Transport </a></li>
+                    </ul>
+                </li>
+                <li><a href="placements.html">Placements</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="https://pcet.ac.in/results2025/">Exam Results</a></li>
+            </ul>
+                </li>
+
+                <li><a href="placements.html">Placements</a></li>
+            </ul>
+        </nav>
+        <a href="https://www.pcet.ac.in/admission-enquiry-form-park-engineering-college-in-coimbatore/" class="btn-modern">Apply Now</a>
+    </header>
+
+    <section class="inner-hero">
+        <div>
+            <h1>Campus <span>Life</span></h1>
+            <p>Discover your home away from home at PCET</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="section-header">
+            <span class="subtitle">Our Facilities</span>
+            <h2>A World-Class Learning Environment</h2>
+            <p style="max-width: 800px; margin: 0 auto; color: var(--gray); font-size: 1.1rem; line-height: 1.6;">Located on a sprawling 30 acres of land surrounded by green fields and coconut groves, PCET provides an ideal, pollution-free atmosphere perfectly designed for living, learning, and collaborating.</p>
+        </div>
+
+        <div class="facility-row" id="library">
+            <div class="text-content">
+                <span class="subtitle">Knowledge Hub</span>
+                <h3>Central Library</h3>
+                <p>The PCET Central Library is the heart of our academic community. Spread across a vast area, it houses an extensive collection of books, international journals, research papers, and digital media catering to all branches of engineering and management.</p>
+                <ul>
+                    <li>Over 50,000 volumes of books</li>
+                    <li>Access to IEEE, Springer, and DELNET digital libraries</li>
+                    <li>Quiet reading halls and dedicated reference sections</li>
+                    <li>Fully automated book issue and return system</li>
+                </ul>
+            </div>
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PCET Library">
+            </div>
+        </div>
+
+        <div class="facility-row reverse" id="hostel">
+            <div class="text-content">
+                <span class="subtitle">Accommodation</span>
+                <h3>Hostel Facilities</h3>
+                <p>We understand that a comfortable living environment is crucial for academic success. PCET offers separate, secure, and well-furnished hostels for boys and girls within the campus premises. The hostels are designed to feel like a home away from home.</p>
+                <ul>
+                    <li>Spacious, well-ventilated rooms</li>
+                    <li>Hygienic mess serving nutritious vegetarian & non-vegetarian food</li>
+                    <li>24/7 security with CCTV surveillance</li>
+                    <li>Recreation rooms with TV and indoor games</li>
+                </ul>
+            </div>
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PCET Hostel">
+            </div>
+        </div>
+
+        <div class="facility-row" id="sports">
+            <div class="text-content">
+                <span class="subtitle">Physical Education</span>
+                <h3>Sports & Games</h3>
+                <p>At PCET, we emphasize the physical well-being of our students just as much as their academic growth. Our campus boasts excellent sporting infrastructure to encourage students to participate in various athletic and sports activities at regional and national levels.</p>
+                <ul>
+                    <li>Expansive grounds for Cricket, Football, and Athletics</li>
+                    <li>Well-maintained courts for Basketball, Volleyball, and Tennis</li>
+                    <li>Indoor sports complex for Badminton, Table Tennis, and Chess</li>
+                    <li>Fully equipped modern gymnasium</li>
+                </ul>
+            </div>
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sports at PCET">
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 100px;" id="infrastructure">
+            <span class="subtitle">Modern Amenities</span>
+            <h2>Infrastructure & Technology</h2>
+        </div>
+
+        <div class="amenities-grid">
+            
+
+            <div class="amenity-card">
+                <div class="amenity-icon">🔬</div>
+                <h4>Advanced Laboratories</h4>
+                <p>State-of-the-art laboratories and workshops equipped with the latest machinery and software, allowing students to gain practical, hands-on experience in their respective engineering fields.</p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="amenity-icon">☕</div>
+                <h4>Campus Cafeteria</h4>
+                <p>A spacious and hygienic cafeteria offering a wide variety of meals, snacks, and beverages. It serves as the perfect spot for students to relax, socialize, and brainstorm between classes.</p>
+            </div>
+            
+            
+            <div class="amenity-card" id="Transport">
+                <div class="amenity-icon">🚌</div>
+                <h4>Transport Facilities</h4>
+                <p>A fleet of well-maintained college buses operates across Coimbatore, Tirupur, and surrounding areas, ensuring safe and convenient daily commuting for day-scholar students and staff.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>PCET.</h2>
+                <p>Park College of Engineering and Technology is dedicated to providing world-class education geared to meet the fast-changing human resource needs of the global industry.</p>
+                <div style="display: flex; gap: 15px;">
+                    <a href="https://www.pcet.ac.in/online-grievance" class="btn-modern" style="padding: 8px 20px; font-size: 0.8rem;">Grievance</a>
+                    <a href="https://www.pcet.ac.in/anti-ragging" class="btn-modern" style="padding: 8px 20px; font-size: 0.8rem; background: #334155; box-shadow: none;">Anti-Ragging</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Academics</h4>
+                <ul>
+                    <li><a href="academics.html">Undergraduate Programs</a></li>
+                    <li><a href="academics.html">Postgraduate Programs</a></li>
+                    <li><a href="#">Academic Diary</a></li>
+                    <li><a href="#">Exam Results</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Institution</h4>
+                <ul>
+                    <li><a href="#">NAAC SSR</a></li>
+                    <li><a href="#">AICTE Approvals</a></li>
+                    <li><a href="#">Mandatory Disclosure</a></li>
+                    <li><a href="#">Park ERP Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li style="color: #cbd5e1; font-weight: 300;">📍 NH 544, Avinashi Road,<br>Kaniyur, Coimbatore - 641 659</li>
+                    <li><a href="tel:04212911100">📞 0421 - 2911100</a></li>
+                    <li><a href="tel:9443792222">📱 +91 94437 92222</a></li>
+                    <li><a href="mailto:info@pcet.ac.in">✉️ info@pcet.ac.in</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Park College of Engineering & Technology. All Rights Reserved. Designed for the Future.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCET Courses Modernization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+
+          /* --- CSS Variables for Theme --- */
+        :root {
+            --primary-color: #8E1B54; /* PCET Maroon/Purple */
+            --secondary-color: #F97316; /* Orange accent */
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+         /* Modern Dropdown Menu CSS */
+        .nav-dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+            background: var(--white); box-shadow: var(--shadow-hover); border-radius: var(--radius-md);
+            padding: 15px 0; min-width: 220px; opacity: 0; visibility: hidden; transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(5px); }
+        .dropdown-menu li { display: block; width: 100%; }
+        .dropdown-menu a { 
+            padding: 10px 25px; display: block; color: var(--gray); font-size: 0.95rem; 
+            font-weight: 500; transition: var(--transition);
+        }
+        .dropdown-menu a:hover { color: var(--brand-primary); background: var(--light); padding-left: 30px; }
+
+        .btn-modern {
+            background: linear-gradient(135deg, var(--brand-primary), #b3256b);
+            color: var(--white); padding: 12px 28px; border-radius: var(--radius-pill);
+            font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;
+            box-shadow: 0 10px 20px rgba(142, 27, 84, 0.3); transition: var(--transition); border: none; cursor: pointer;
+        }
+        .btn-modern:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(142, 27, 84, 0.4); color: var(--white); }
+
+        
+        /* --- Top Bar --- */
+        .top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        /* --- Main Navigation --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .logo span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn-primary:hover {
+            background-color: #ea580c;
+        }
+
+        
+        :root {
+            --primary-color: #8E1B54; /* PCET Maroon */
+            --secondary-color: #F97316; /* Orange */
+            --text-main: #333333;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --border-color: #e5e7eb;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
+
+        .courses-section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- Modern Tabs Styling --- */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary-color);
+            background-color: #f3f4f6;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+
+        /* The animated underline for the active tab */
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -12px; /* Aligns with the border-bottom of container */
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 4px 4px 0 0;
+        }
+
+        /* --- Tab Content & Grid --- */
+        .tab-content {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block; /* Show active content */
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* --- Modern Course Cards --- */
+        .course-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .course-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            border-left-color: var(--secondary-color);
+        }
+
+        .course-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+     <div class="top-bar">
+        <div>📞 +91 94437 92222 | ✉️ info@pcet.ac.in</div>
+        <div>Counselling Code: 2716 | <a href="#">Online Payment</a></div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <h1>PCET</h1>
+            <span>Park College of Engineering & Technology</span>
+        </div>
+        <nav>
+             <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="nav-dropdown">
+                    <a href="academics.html">Academics ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="academics.html">Courses</a></li>
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">Curriculum & Regulations</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="campus-life.html" class="active">Campus Life ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#library">Library</a></li>
+                        <li><a href="#infrastructure">Infrastructure</a></li>
+                        <li><a href="#hostel">Hostel</a></li>
+                        <li><a href="#sports">Sports & Games</a></li>
+                        <li><a href="#Transport ">Transport </a></li>
+                    </ul>
+                <li><a href="placements.html" class="active">Placements</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="https://pcet.ac.in/results2025/">Exam Results</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="btn-primary">Apply Now</a>
+    </header>
+
+    <section class="courses-section">
+        <div class="section-header">
+            <h2>Academic Programs</h2>
+            <p>Discover our comprehensive range of engineering and management courses.</p>
+        </div>
+
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="openTab(event, 'ug-courses')">UG Courses</button>
+            <button class="tab-btn" onclick="openTab(event, 'pg-courses')">PG Courses</button>
+            <button class="tab-btn" onclick="openTab(event, 'phd-courses')">Ph.D Courses</button>
+        </div>
+
+        <div id="ug-courses" class="tab-content active">
+            <div class="course-grid">
+                <div class="course-card"><h4>Aeronautical Engineering</h4></div>
+                <div class="course-card"><h4>Artificial Intelligence and Data Science</h4></div>
+                <div class="course-card"><h4>Biomedical Engineering</h4></div>
+                <div class="course-card"><h4>Computer Science and Engineering (Cyber Security)</h4></div>
+                <div class="course-card"><h4>Computer Science and Engineering</h4></div>
+                <div class="course-card"><h4>Electrical and Electronics Engineering</h4></div>
+                <div class="course-card"><h4>Electronics and Communication Engineering</h4></div>
+                <div class="course-card"><h4>Geo-Informatics Engineering</h4></div>
+                <div class="course-card"><h4>Information Technology</h4></div>
+                <div class="course-card"><h4>Mechanical Engineering</h4></div>
+                <div class="course-card"><h4>Medical Electronics Engineering</h4></div>
+                <div class="course-card"><h4>Robotics and Automation</h4></div>
+            </div>
+        </div>
+
+        <div id="pg-courses" class="tab-content">
+            <div class="course-grid">
+                <div class="course-card"><h4>Aeronautical Engineering</h4></div>
+                <div class="course-card"><h4>Computer Science and Engineering</h4></div>
+                <div class="course-card"><h4>Engineering Design</h4></div>
+                <div class="course-card"><h4>Master of Business Administration</h4></div>
+            </div>
+        </div>
+
+        <div id="phd-courses" class="tab-content">
+            <div class="course-grid">
+                <div class="course-card"><h4>Aeronautical Engineering</h4></div>
+                <div class="course-card"><h4>Computer Science and Engineering</h4></div>
+                <div class="course-card"><h4>Mechanical Engineering</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openTab(evt, courseName) {
+            // Get all elements with class="tab-content" and hide them
+            let tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Get all elements with class="tab-btn" and remove the class "active"
+            let tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(courseName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
